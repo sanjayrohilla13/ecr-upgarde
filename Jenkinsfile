@@ -22,14 +22,14 @@ pipeline {
         }
 
         stage('Build') {
-          #sh 'make build'
+          
         }
 
         stage('Scan') {
-          #sh 'make scan'
+          
         }
         stage('Push') {
-          #sh 'make publish'
+        
         }
     }
 
