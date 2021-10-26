@@ -11,7 +11,8 @@ pipeline {
         }
 
         stage('Docker Login') {
-
+             steps {
+             }
         }
         stage('Download Github Repo') {
             steps {
@@ -22,16 +23,19 @@ pipeline {
         }
 
         stage('Build') {
-          
+           steps {
+           }
         }
 
         stage('Scan') {
+             steps {
+             }
           
         }
         stage('Push') {
+             steps {
+             }
         
         }
     }
-
-
 }
