@@ -16,7 +16,7 @@ pipeline {
         stage('Download Github Repo') {
             steps {
                 script {
-                    git credentialsId: 'sanjayrohilla13', branch: 'master', url: 'git@gist.github.com:0594963ad38e68917ef189b4e6a269db.git', poll: false
+                    git credentialsId: 'sanjayrohilla13', branch: 'master', url: 'git@github.com:sanjayrohilla13/ecr-upgarde.git', poll: false
                 }
             }        
         }
