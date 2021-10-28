@@ -10,6 +10,9 @@ pipeline {
         stage('Download GIT Hub Repo') {
             steps {
                 echo 'Downloading..'
+                script {
+                    git credentialsId: 'sanjayrohilla13', branch: 'master', url: 'git@github.com:sanjayrohilla13/ecr-upgarde.git', poll: false
+                }
             }
         }
         stage('Build') {
