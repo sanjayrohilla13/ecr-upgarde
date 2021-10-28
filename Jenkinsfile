@@ -1,41 +1,21 @@
 pipeline {
     agent any
-    parameters {
-    }
-    environment {
-    }
 
     stages {
-        stage('prepare') {
-
-        }
-
-        stage('Docker Login') {
-             steps {
-             }
-        }
-        stage('Download Github Repo') {
-            steps {
-                script {
-                    git credentialsId: 'sanjayrohilla13', branch: 'master', url: 'git@github.com:sanjayrohilla13/ecr-upgarde.git', poll: false
-                }
-            }        
-        }
-
         stage('Build') {
-           steps {
-           }
+            steps {
+                echo 'Building..'
+            }
         }
-
-        stage('Scan') {
-             steps {
-             }
-          
+        stage('Test') {
+            steps {
+                echo 'Testing..'
+            }
         }
-        stage('Push') {
-             steps {
-             }
-        
+        stage('Deploy') {
+            steps {
+                echo 'Deploying....'
+            }
         }
     }
 }
