@@ -2,20 +2,29 @@ pipeline {
     agent any
 
     stages {
+        stage('Docker Login') {
+            steps {
+                echo 'Logging in..'
+            }
+        }
+        stage('Download GIT Hub Repo') {
+            steps {
+                echo 'Downloading..'
+            }
+        }
         stage('Build') {
             steps {
-                echo 'Building..'
+                echo 'Building....'
             }
-        }
-        stage('Test') {
+        stage('Scan') {
             steps {
-                echo 'Testing..'
+                echo 'Scanning....'
             }
-        }
-        stage('Deploy') {
+        stage('Push to ECR') {
             steps {
-                echo 'Deploying....'
+                echo 'Pushing to ECR....'
             }
+        
         }
     }
 }
