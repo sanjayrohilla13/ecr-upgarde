@@ -18,6 +18,7 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building....'
+                sh 'make build'
             }
         }    
         stage('Scan') {
