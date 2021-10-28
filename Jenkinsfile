@@ -16,15 +16,17 @@ pipeline {
             steps {
                 echo 'Building....'
             }
+        }    
         stage('Scan') {
             steps {
                 echo 'Scanning....'
             }
+        }    
         stage('Push to ECR') {
             steps {
                 echo 'Pushing to ECR....'
             }
-        
+        }
         }
     }
 }
