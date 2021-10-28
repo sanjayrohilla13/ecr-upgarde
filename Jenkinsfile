@@ -27,6 +27,5 @@ pipeline {
                 echo 'Pushing to ECR....'
             }
         }
-        }
     }
 }
