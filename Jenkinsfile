@@ -1,6 +1,7 @@
 pipeline {
-    agent any
-
+    agent {
+        docker { image 'node:14-alpine' }
+            }
     stages {
         stage('Docker Login') {
             steps {
@@ -18,8 +19,6 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building....'
-                docker { image 'node:14-alpine' 
-                }
             }
         }    
         stage('Scan') {
