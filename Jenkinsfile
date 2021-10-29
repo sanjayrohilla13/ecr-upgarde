@@ -1,5 +1,5 @@
 pipeline {
-    agent { dockerfile true }
+    agent any
 
     stages {
         stage('Docker Login') {
@@ -11,21 +11,17 @@ pipeline {
             steps {
                 echo 'Downloading..'
                 script {
-                    git branch: 'master', url: 'git@github.com:sanjayrohilla13/ecr-upgarde.git', poll: false
+                    git credentialsId: 'sanjayrohilla13', branch: 'master', url: 'git@github.com:sanjayrohilla13/ecr-upgarde.git', poll: false
                 }
             }
         }
         stage('Build') {
             steps {
                 echo 'Building....'
+                sh 'docker build -t mycentos .'
+                echo 'Build Completed'
             }
         }    
-        stage('Test') {
-            steps {
-                sh 'node --version'
-                sh 'svn --version'
-            }
-        }
         stage('Scan') {
             steps {
                 echo 'Scanning....'
