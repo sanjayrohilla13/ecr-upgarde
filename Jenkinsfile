@@ -18,7 +18,9 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building....'
-                app = docker.build("mycentos")
+                script {
+                app = docker.build("mycentos:1.0")
+                }
                 echo 'Build Completed'
             }
         }    
