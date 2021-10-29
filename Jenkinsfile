@@ -1,5 +1,5 @@
 pipeline {
-    agent any
+    agent { dockerfile true }
 
     stages {
         stage('Docker Login') {
@@ -11,7 +11,7 @@ pipeline {
             steps {
                 echo 'Downloading..'
                 script {
-                    git credentialsId: 'sanjayrohilla13', branch: 'master', url: 'git@github.com:sanjayrohilla13/ecr-upgarde.git', poll: false
+                    git branch: 'master', url: 'git@github.com:sanjayrohilla13/ecr-upgarde.git', poll: false
                 }
             }
         }
@@ -20,6 +20,12 @@ pipeline {
                 echo 'Building....'
             }
         }    
+        stage('Test') {
+            steps {
+                sh 'node --version'
+                sh 'svn --version'
+            }
+        }
         stage('Scan') {
             steps {
                 echo 'Scanning....'
