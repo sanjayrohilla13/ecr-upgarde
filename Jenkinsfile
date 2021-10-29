@@ -18,7 +18,7 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building....'
-                sh 'docker build -t mycentos .'
+                make build
                 echo 'Build Completed'
             }
         }    
