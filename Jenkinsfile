@@ -21,7 +21,7 @@ pipeline {
             steps {
                 echo 'Building....'
                 script {
-                'app = docker.build "${IMAGE_REPO_NAME}:${IMAGE_TAG}"
+                //app = docker.build "${IMAGE_REPO_NAME}:${IMAGE_TAG}"
                 app = docker.build "240979667302.dkr.ecr.ap-southeast-2.amazonaws.com/centos-repo:1.3"
                 
                 }
