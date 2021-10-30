@@ -23,7 +23,6 @@ pipeline {
                 script {
                 //app = docker.build "${IMAGE_REPO_NAME}:${IMAGE_TAG}"
                 app = docker.build "240979667302.dkr.ecr.ap-southeast-2.amazonaws.com/centos-repo:1.3"
-                
                 }
                 echo 'Build Completed'
             }
@@ -33,14 +32,14 @@ pipeline {
                 echo 'Scanning....'
             }
         }    
-        stage('Logging into AWS ECR') {
+        /*stage('Logging into AWS ECR') {
             steps {
                 script {
                 echo "aws ecr get-login-password --region ${AWS_DEFAULT_REGION} | docker login --username AWS --password-stdin ${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_DEFAULT_REGION}.amazonaws.com"
                 sh "aws ecr get-login-password --region ${AWS_DEFAULT_REGION} | docker login --username AWS --password-stdin ${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_DEFAULT_REGION}.amazonaws.com"
                 }   
             }
-        }
+        } */
 
         stage('Push to ECR') {
             steps {
