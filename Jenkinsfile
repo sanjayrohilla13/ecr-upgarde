@@ -41,8 +41,10 @@ pipeline {
         }
 
         stage('Push to ECR') {
-            docker.withRegistry('https://240979667302.dkr.ecr.ap-southeast-2.amazonaws.com', 'ecr:ap-southeast-2:srv-ecr-usr') {
-            docker.image('centos-repo').push('1.2')
+            script {
+                docker.withRegistry('https://240979667302.dkr.ecr.ap-southeast-2.amazonaws.com', 'ecr:ap-southeast-2:srv-ecr-usr') {
+                docker.image('centos-repo').push('1.2')
+                }
             }   
         }
     }
