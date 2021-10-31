@@ -12,8 +12,6 @@ export $(shell sed 's/=.*//' $(dpl))
 
 # grep the version from the mix file
 VERSION=$(shell ./version.sh)
-
-
 # HELP
 # This will output the help for each task
 # thanks to https://marmelab.com/blog/2016/02/29/auto-documented-makefile.html
