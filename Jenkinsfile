@@ -18,7 +18,8 @@ pipeline {
         stage('Build') {
             steps {
                // sh 'make docker-build'
-                echo 'Building....'
+               sh 'docker build -t centos-repo .'
+            echo 'Building....'
             }
         }    
         stage('Scan') {
@@ -45,6 +46,10 @@ pipeline {
         stage('Push to ECR') {
             steps {
                 echo 'Pushing to ECR....'
+                sh '''
+                    docker tag centos-repo:latest 240979667302.dkr.ecr.ap-southeast-2.amazonaws.com/centos-repo:latest
+                    docker push 240979667302.dkr.ecr.ap-southeast-2.amazonaws.com/centos-repo:latest
+                '''
             }
         }
     }
