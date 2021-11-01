@@ -33,8 +33,8 @@ pipeline {
                 // some block
                 echo 'Logging in..'
                 sh 'aws --version'
-                }   
-                //sh 'make docker-login'
+                sh 'make docker-login'
+                }    
             }
         }
 
