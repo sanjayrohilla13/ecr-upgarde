@@ -1,8 +1,12 @@
 pipeline {
     agent any
 
+    enviornment {
+    AWS_DEFAULT_REGION = 'ap-southeast-2'
+    TEMP_VAR = credentials('srv-ecr-usr')
+    }
+
     stages {
-        
         stage('Download GIT Hub Repo') {
             steps {
                 echo 'Downloading..'
@@ -14,7 +18,7 @@ pipeline {
 
         stage('Build') {
             steps {
-                sh 'make docker-build'
+               // sh 'make docker-build'
                 echo 'Building....'
             }
         }    
@@ -27,9 +31,8 @@ pipeline {
         stage('Docker Login') {
             steps {
                 echo 'Logging in..'
-                withAWS(credentials: 'AKIATQG4B5FTAIFRFIP5', region: 'ap-southeast-2') {
-                sh 'make docker-login'
-                }
+                sh 'aws --version'
+                //sh 'make docker-login'
             }
         }
 
