@@ -1,9 +1,8 @@
 pipeline {
     agent any
-
-    enviornment {
-    AWS_DEFAULT_REGION = 'ap-southeast-2'
-    TEMP_VAR = credentials('srv-ecr-usr')
+    environment {
+        AWS_DEFAULT_REGION = 'ap-southeast-2'
+        TEMP_VAR = credentials('srv-ecr-usr')
     }
 
     stages {
