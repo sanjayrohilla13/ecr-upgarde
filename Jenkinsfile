@@ -29,6 +29,7 @@ pipeline {
                 echo 'Logging in..'
                 withAWS(credentials: 'AKIATQG4B5FTAIFRFIP5', region: 'ap-southeast-2') {
                 sh 'make docker-login'
+                }
             }
         }
 
