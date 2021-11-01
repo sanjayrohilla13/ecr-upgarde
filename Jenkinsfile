@@ -2,7 +2,7 @@ pipeline {
     agent any
     environment {
         AWS_DEFAULT_REGION = 'ap-southeast-2'
-        TEMP_VAR = credentials('srv-ecr-usr')
+        //TEMP_VAR = credentials('srv-ecr-usr')
     }
 
     stages {
@@ -29,8 +29,11 @@ pipeline {
 
         stage('Docker Login') {
             steps {
+                withCredentials([<object of type com.cloudbees.jenkins.plugins.awscredentials.AmazonWebServicesCredentialsBinding>]) {
+                // some block
                 echo 'Logging in..'
                 sh 'aws --version'
+                }   
                 //sh 'make docker-login'
             }
         }
