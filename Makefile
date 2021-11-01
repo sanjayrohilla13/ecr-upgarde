@@ -2,9 +2,16 @@
 docker-login:
 	//$$(aws ecr get-login --no-include-email --region ap-southeast-2 --profile=mycompany)
 	$$(aws ecr get-login-password --region ap-southeast-2 | docker login --username AWS --password-stdin 240979667302.dkr.ecr.ap-southeast-2.amazonaws.com)
+
 # Build docker target
 docker-build:
 	docker build -f Dockerfile --no-cache -t mycompany/myapp .
+
+# Login to AWS registry (must have docker running)
+docker-login:
+	//$$(aws ecr get-login --no-include-email --region ap-southeast-2 --profile=mycompany)
+	$$(aws ecr get-login-password --region ap-southeast-2 | docker login --username AWS --password-stdin 240979667302.dkr.ecr.ap-southeast-2.amazonaws.com)
+
 # Tag docker image
 docker-tag:
 	$(eval REV=$(shell git rev-parse HEAD | cut -c1-7))
