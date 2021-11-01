@@ -27,7 +27,9 @@ pipeline {
         stage('Docker Login') {
             steps {
                 echo 'Logging in..'
+                withAWS(credentials: 'srv-ecr-usr', region: 'ap-southeast-2') {
                 sh 'make docker-login'
+                }
             }
         }
 
