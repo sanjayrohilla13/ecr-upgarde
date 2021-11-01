@@ -15,7 +15,7 @@ pipeline {
         stage('Docker Login') {
             steps {
                 echo 'Logging in..'
-                sh 'make docker-login'
+                //sh 'make docker-login'
             }
         }
 
