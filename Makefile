@@ -5,7 +5,6 @@ docker-login:
 # Build docker target
 docker-build:
 	docker build -f Dockerfile --no-cache -t mycompany/myapp .
-
 # Tag docker image
 docker-tag:
 	$(eval REV=$(shell git rev-parse HEAD | cut -c1-7))
