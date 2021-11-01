@@ -29,7 +29,7 @@ pipeline {
 
         stage('Docker Login') {
             steps {
-                withCredentials([<object of type com.cloudbees.jenkins.plugins.awscredentials.AmazonWebServicesCredentialsBinding>]) {
+                withCredentials([aws(accessKeyVariable:'AWS_ACCESS_KEY_ID',credentialsId:'srv-ecr-usr',secretKeyVariable:'AWS_SECRET_ACCESS_KEY')]) {
                 // some block
                 echo 'Logging in..'
                 sh 'aws --version'
