@@ -12,13 +12,6 @@ pipeline {
             }
         }
 
-        stage('Docker Login') {
-            steps {
-                echo 'Logging in..'
-                //sh 'make docker-login'
-            }
-        }
-
         stage('Build') {
             steps {
                 sh 'make docker-build'
@@ -30,6 +23,14 @@ pipeline {
                 echo 'Scanning....'
             }
         }    
+
+        stage('Docker Login') {
+            steps {
+                echo 'Logging in..'
+                sh 'make docker-login'
+            }
+        }
+
         stage('Push to ECR') {
             steps {
                 echo 'Pushing to ECR....'
