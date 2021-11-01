@@ -34,7 +34,7 @@ pipeline {
                 echo 'Logging in..'
                 sh 'aws --version'
                 sh 'aws ec2 describe-instances'
-                //sh 'make docker-login'
+                sh 'make docker-login'
                 }    
             }
         }
