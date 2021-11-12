@@ -5,9 +5,10 @@ docker-build:
 	docker build -f Dockerfile --no-cache -t mycompany/myapp .
 
 # Login to AWS registry (must have docker running)
-docker-login:
+login-ecr:
 	//$$(aws ecr get-login --no-include-email --region ap-southeast-2 --profile=mycompany)
-	$$(aws ecr get-login-password --region ap-southeast-2 | docker login --username AWS --password-stdin 240979667302.dkr.ecr.ap-southeast-2.amazonaws.com)
+	aws ecr get-login-password --region ap-southeast-2 | docker login --username AWS --password-stdin 240979667302.dkr.ecr.ap-southeast-2.amazonaws.com
+.PHONY: login-ecr
 
 # Tag docker image
 docker-tag:
@@ -25,7 +26,7 @@ docker-push:
 push-ecr:
 	docker tag centos-repo:latest 240979667302.dkr.ecr.ap-southeast-2.amazonaws.com/centos-repo:latest
 	docker push 240979667302.dkr.ecr.ap-southeast-2.amazonaws.com/centos-repo:latest
-.phony: push-ecr
+.PHONY: push-ecr
 
 # Build docker image and push to AWS registry
 docker-build-and-push: docker-login docker-build docker-tag docker-push 
