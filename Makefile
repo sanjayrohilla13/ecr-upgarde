@@ -18,7 +18,6 @@ login-ecr:
 
 # Tag docker image
 docker-tag:
-# $(eval REV=$(shell git rev-parse HEAD | cut -c1-7))
 	docker tag mycompany/myapp:latest 240979667302.dkr.ecr.ap-southeast-2.amazonaws.com/mycompany/myapp:latest
 	docker tag mycompany/myapp:latest 240979667302.dkr.ecr.ap-southeast-2.amazonaws.com/mycompany/myapp:$(REV)
 
