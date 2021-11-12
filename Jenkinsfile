@@ -32,13 +32,14 @@ pipeline {
             steps {
                 withCredentials([aws(accessKeyVariable:'AWS_ACCESS_KEY_ID',credentialsId:'srv-ecr-usr',secretKeyVariable:'AWS_SECRET_ACCESS_KEY')]) {
                 // some block
-                //sh 'make docker-login'
+                sh 'make docker-login'
+                /* Sanjay 11-11-2021
                 echo 'Logging in..'
                 sh '''
                 aws --version
                 aws ec2 describe-instances
                 aws ecr get-login-password --region ap-southeast-2 | docker login --username AWS --password-stdin 240979667302.dkr.ecr.ap-southeast-2.amazonaws.com
-                '''
+                ''' */
                 }    
             }
         }
