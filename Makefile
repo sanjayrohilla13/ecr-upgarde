@@ -11,7 +11,7 @@ login-ecr:
 
 # Tag docker image
 docker-tag:
-	$(eval REV=$(shell git rev-parse HEAD | cut -c1-7))
+# $(eval REV=$(shell git rev-parse HEAD | cut -c1-7))
 	docker tag mycompany/myapp:latest 240979667302.dkr.ecr.ap-southeast-2.amazonaws.com/mycompany/myapp:latest
 	docker tag mycompany/myapp:latest 240979667302.dkr.ecr.ap-southeast-2.amazonaws.com/mycompany/myapp:$(REV)
 
@@ -23,8 +23,8 @@ docker-push:
 
 #Push the Image into ECR 
 push-ecr:
-	docker tag centos-repo:latest 240979667302.dkr.ecr.ap-southeast-2.amazonaws.com/centos-repo:latest
-	docker push 240979667302.dkr.ecr.ap-southeast-2.amazonaws.com/centos-repo:latest
+	docker tag centos-repo:latest 240979667302.dkr.ecr.ap-southeast-2.amazonaws.com/centos-repo:Image1
+	docker push 240979667302.dkr.ecr.ap-southeast-2.amazonaws.com/centos-repo:Image1
 .PHONY: push-ecr
 
 # Build docker image and push to AWS registry
