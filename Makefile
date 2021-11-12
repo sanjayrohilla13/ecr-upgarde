@@ -1,9 +1,16 @@
+testqube_VERSION ?= 9.0
+IMAGE_NAME = 240979667302.dkr.ecr.ap-southeast-2.amazonaws.com/testqube
+
+#Full version
+FULL_VERSION = $(testqube_VERSION)-$(BUILD_NUMBER)
+
+FULL_IMAGE = $(IMAGE_NAME):$(FULL_VERSION)
 # Login to AWS registry (must have docker running)
 
 # Build docker target
 docker-build:
-	docker build -f Dockerfile --no-cache -t mycompany/myapp .
-
+# docker build -f Dockerfile --no-cache -t mycompany/myapp .
+	docker build -t centos-repo .
 # Login to AWS registry (must have docker running)
 login-ecr:
 	aws ecr get-login-password --region ap-southeast-2 | docker login --username AWS --password-stdin 240979667302.dkr.ecr.ap-southeast-2.amazonaws.com
@@ -23,8 +30,10 @@ docker-push:
 
 #Push the Image into ECR 
 push-ecr:
-	docker tag centos-repo:latest 240979667302.dkr.ecr.ap-southeast-2.amazonaws.com/centos-repo:Image1
-	docker push 240979667302.dkr.ecr.ap-southeast-2.amazonaws.com/centos-repo:Image1
+# docker tag centos-repo:latest 240979667302.dkr.ecr.ap-southeast-2.amazonaws.com/centos-repo:Image1
+	docker tag centos-repo:latest $(FULL_IMAGE)
+# docker push 240979667302.dkr.ecr.ap-southeast-2.amazonaws.com/centos-repo:Image1
+	docker push $(FULL_IMAGE)
 .PHONY: push-ecr
 
 # Build docker image and push to AWS registry
