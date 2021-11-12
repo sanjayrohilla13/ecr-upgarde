@@ -31,15 +31,13 @@ pipeline {
         stage('Docker Login') {
             steps {
                 withCredentials([aws(accessKeyVariable:'AWS_ACCESS_KEY_ID',credentialsId:'srv-ecr-usr',secretKeyVariable:'AWS_SECRET_ACCESS_KEY')]) {
-                // some block
-                sh 'make docker-login'
-                /* Sanjay 11-11-2021
+               // Docker Login in Jenkinsfile
                 echo 'Logging in..'
                 sh '''
                 aws --version
                 aws ec2 describe-instances
                 aws ecr get-login-password --region ap-southeast-2 | docker login --username AWS --password-stdin 240979667302.dkr.ecr.ap-southeast-2.amazonaws.com
-                ''' */
+                ''' 
                 }    
             }
         }
@@ -47,10 +45,12 @@ pipeline {
         stage('Push to ECR') {
             steps {
                 echo 'Pushing to ECR....'
+                sh 'make push-ecr'
+                /*
                 sh '''
                     docker tag centos-repo:latest 240979667302.dkr.ecr.ap-southeast-2.amazonaws.com/centos-repo:latest
                     docker push 240979667302.dkr.ecr.ap-southeast-2.amazonaws.com/centos-repo:latest
-                '''
+                ''' */
             }
         }
     }
