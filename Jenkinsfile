@@ -26,7 +26,16 @@ pipeline {
             steps {
                 echo 'Scanning....'
             }
-        }    
+        }
+
+        stage('ecr-creation') {
+        sh '''
+            terraform init
+            terraform get -update
+            terraform plan
+            terraform apply --auto-approve
+            '''
+            }    
 
         stage('Docker Login') {
             steps {
