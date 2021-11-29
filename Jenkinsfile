@@ -31,12 +31,10 @@ pipeline {
         stage('ecr-creation') {
             steps {
                 sh '''
-                    cd terraform
                     terraform init
                     terraform get -update
                     terraform plan
                     terraform apply --auto-approve
-                    cd ..
                     '''
                 }    
             }    
