@@ -29,14 +29,15 @@ pipeline {
         }
 
         stage('ecr-creation') {
-        sh '''
-            terraform init
-            terraform get -update
-            terraform plan
-            terraform apply --auto-approve
-            '''
+            steps {
+                sh '''
+                    terraform init
+                    terraform get -update
+                    terraform plan
+                    terraform apply --auto-approve
+                    '''
+                }    
             }    
-
         stage('Docker Login') {
             steps {
                 withCredentials([aws(accessKeyVariable:'AWS_ACCESS_KEY_ID',credentialsId:'srv-ecr-usr',secretKeyVariable:'AWS_SECRET_ACCESS_KEY')]) {
