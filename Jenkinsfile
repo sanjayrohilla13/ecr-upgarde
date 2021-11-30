@@ -30,7 +30,7 @@ pipeline {
                 echo 'Scanning....'
                 sh '''
                 pwd
-                if $DOCKER_SRC == "ECR"
+                if $DOCKER_SRC == 'ECR'
                 then
                 echo 'Success'
                 fi
