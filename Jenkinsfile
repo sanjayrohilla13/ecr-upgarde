@@ -42,7 +42,7 @@ pipeline {
                     terraform plan
                     //terraform apply --auto-approve
                     TF_LOG=DEBUG terraform apply \
-                    -var "docker_src=${DOCKER_SRC}\
+                    -var "docker_src=${DOCKER_SRC}"\
                     -auto-approve=true
                     cd ..
                     '''
