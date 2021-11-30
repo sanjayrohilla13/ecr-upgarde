@@ -29,14 +29,13 @@ pipeline {
             steps {
                 echo 'Scanning....'
                 sh '''
-                REPO_FLAG = 0
                 if $DOCKER_SRC == "ECR"
                     then
-                        REPO_FLAG = 1
+                        DOCKER_SRC = 1
                     else 
-                        REPO_FLAG = 0
+                        DOCKER_SRC = 0
                     fi
-                    echo $REPO_FLAG
+                    echo $DOCKER_SRC
                 '''
             }
         }
