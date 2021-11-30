@@ -30,7 +30,7 @@ pipeline {
                 echo 'Scanning....'
                 sh '''
                 pwd
-                if $DOCKER_SRC == 'PCR'
+                if ${DOCKER_SRC} == 'PCR'
                 then
                 echo 'Success'
                 else
