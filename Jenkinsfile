@@ -50,7 +50,7 @@ pipeline {
                     terraform get -update
                     terraform plan
                     TF_LOG=DEBUG terraform apply \
-                    -var "repo_src_flag=${REPO_FLAG}"\
+                    -var "repo_src_flag=${DOCKER_REPO}"\
                     -auto-approve=true
                     """, returnStdout: true)
                     }  
