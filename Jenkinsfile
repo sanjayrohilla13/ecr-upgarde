@@ -46,7 +46,6 @@ pipeline {
                     -auto-approve=true
                     cd ..
                     '''
-                    returnStdout: true
                     }  
                 }  
             }    
