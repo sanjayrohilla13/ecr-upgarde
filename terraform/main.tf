@@ -4,6 +4,6 @@ resource "aws_instance" "Demo_Instance" {
     instance_type = "t2.micro"
     #availability_zone = "ap-southeast-2"
     tags = {
-        Name = var.docker_src == 'ECR' ? "ECR-Repo": "artifactory-Repo" 
+        Name = var.docker_src != "ECR" ? : "artifactory-Repo" : "ECR-Repo"
     }
 }
