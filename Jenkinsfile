@@ -30,7 +30,6 @@ pipeline {
                 echo 'Scanning....'
                 sh '''
                 pwd
-                $REPO_FLAG = 0
                 if $DOCKER_SRC == "ECR"
                 then
                 echo 'Success'
