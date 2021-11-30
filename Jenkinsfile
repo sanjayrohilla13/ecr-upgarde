@@ -31,9 +31,9 @@ pipeline {
                 sh '''
                 if $DOCKER_SRC == "ECR"
                     then
-                        DOCKER_SRC = 1
+                        $DOCKER_SRC = 1
                     else 
-                        DOCKER_SRC = 0
+                        $DOCKER_SRC = 0
                     fi
                     echo $DOCKER_SRC
                 '''
