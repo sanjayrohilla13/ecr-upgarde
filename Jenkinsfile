@@ -21,7 +21,7 @@ pipeline {
         stage('Build') {
             steps {
                // sh 'make docker-build'
-               sh 'docker build -t centos-repo .'
+               //sh 'docker build -t centos-repo .'
             echo 'Building....'
             }
         }    
@@ -30,10 +30,10 @@ pipeline {
                 echo 'Scanning....'
                 sh '''
                 $REPO_FLAG = 0
-                if $DOCKER_SRC == "ECR"
+                if [ $DOCKER_SRC == "ECR" ]; 
                     then
                         $REPO_FLAG = 1
-                    fi
+                fi
                     echo $REPO_FLAG
                 '''
             }
