@@ -34,18 +34,16 @@ pipeline {
         stage('ecr-creation') {
             steps {
                 withCredentials([aws(accessKeyVariable:'AWS_ACCESS_KEY_ID',credentialsId:'srv-ecr-usr',secretKeyVariable:'AWS_SECRET_ACCESS_KEY')]) {
-                sh (script:"""
+                sh (script: """
                     cd terraform
                     pwd
                     terraform init
                     terraform get -update
                     terraform plan
-                    //terraform apply --auto-approve
                     TF_LOG=DEBUG terraform apply \
                     -var "docker_src=${DOCKER_SRC}"\
                     -auto-approve=true
-                    cd ..
-                    """)
+                    """, returnStdout: true)
                     }  
                 }  
             }    
