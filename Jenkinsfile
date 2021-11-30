@@ -31,6 +31,7 @@ pipeline {
         stage('ecr-creation') {
             steps {
                 sh '''
+                    pwd
                     terraform init
                     terraform get -update
                     terraform plan
