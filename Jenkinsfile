@@ -5,6 +5,9 @@ pipeline {
         //TEMP_VAR = credentials('srv-ecr-usr')
     }
 
+    parameters{
+        choice(name: 'DOCKER_SRC', choices: ['ECR','artifactory'], description: 'Source of Sonarqube Docker Source')
+    }
     stages {
         stage('Download GIT Hub Repo') {
             steps {
@@ -37,9 +40,13 @@ pipeline {
                     terraform init
                     terraform get -update
                     terraform plan
-                    terraform apply --auto-approve
+                    //terraform apply --auto-approve
+                    TF_LOG=DEBUG terraform apply \
+                    -var "docker_src=${DOCKER_SRC}\
+                    -auto-approve=true
                     cd ..
                     '''
+                    returnStdout: true
                     }  
                 }  
             }    
