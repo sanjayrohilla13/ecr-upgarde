@@ -35,6 +35,12 @@ pipeline {
             steps {
                 withCredentials([aws(accessKeyVariable:'AWS_ACCESS_KEY_ID',credentialsId:'srv-ecr-usr',secretKeyVariable:'AWS_SECRET_ACCESS_KEY')]) {
                 sh (script: """
+                    if DOCKER_SRC == "ECR"
+                    then
+                    REPO_FLAG = true
+                    else 
+                    REPO_FLAG = false
+                    fi
                     cd terraform
                     pwd
                     terraform init

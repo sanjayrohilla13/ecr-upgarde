@@ -1,4 +1,4 @@
-variable "docker_src" {
-    type = string
-    default = "Instance 1"
+variable "repo_src_flag" {
+    type = bool
+    default = false
 }
