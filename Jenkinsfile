@@ -31,8 +31,8 @@ pipeline {
                 sh '''
                 $REPO_FLAG = 0
                 if [ $DOCKER_SRC == "ECR" ]; 
-                    then
-                        $REPO_FLAG = 1
+                then
+                echo "Success"
                 fi
                     echo $REPO_FLAG
                 '''
