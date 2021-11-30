@@ -31,6 +31,7 @@ pipeline {
                 sh '''
                 pwd
                 if $DOCKER_SRC == 'ECR'
+                then
                 echo 'Success'
                 fi
                 '''
