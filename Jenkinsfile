@@ -35,11 +35,11 @@ pipeline {
             steps {
                 withCredentials([aws(accessKeyVariable:'AWS_ACCESS_KEY_ID',credentialsId:'srv-ecr-usr',secretKeyVariable:'AWS_SECRET_ACCESS_KEY')]) {
                 sh (script: """
-                    if DOCKER_SRC == "ECR"
+                    if ${DOCKER_SRC} == "ECR"
                     then
-                    REPO_FLAG = true
+                    ${REPO_FLAG} = true
                     else 
-                    REPO_FLAG = false
+                    ${REPO_FLAG} = false
                     fi
                     cd terraform
                     pwd
@@ -47,7 +47,7 @@ pipeline {
                     terraform get -update
                     terraform plan
                     TF_LOG=DEBUG terraform apply \
-                    -var "docker_src=${DOCKER_SRC}"\
+                    -var "repo_src_flag=${REPO_FLAG}"\
                     -auto-approve=true
                     """, returnStdout: true)
                     }  
