@@ -30,11 +30,11 @@ pipeline {
                 echo 'Scanning....'
                 sh '''
                 $REPO_FLAG = 0
-                if [ $DOCKER_SRC == "ECR" ]; 
+                if $DOCKER_SRC == "ECR"
                 then
-                echo "Success"
+                echo 'Success'
                 fi
-                    echo $REPO_FLAG
+                echo $REPO_FLAG
                 '''
             }
         }
