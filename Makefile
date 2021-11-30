@@ -1,6 +1,6 @@
 testqube_VERSION ?= 9.0
-//ECR_REPO = 240979667302.dkr.ecr.ap-southeast-2.amazonaws.com/testqube
-ECR_REPO = ${aws_ecr_repository.ecr-name.repository_url}
+ECR_REPO = 240979667302.dkr.ecr.ap-southeast-2.amazonaws.com/testqube
+//ECR_REPO = ${aws_ecr_repository.ecr-name.repository_url}
 #Full version
 FULL_VERSION = $(testqube_VERSION)-$(BUILD_NUMBER)
 
