@@ -30,17 +30,17 @@ pipeline {
         stage('Scan') {
             steps {
                 echo 'Scanning....'
-                if($DOCKER_SRC == "artifactory"){
-                DOCKER_SRC_FLAG = true
-                }
+                sh (script: '''
+                if ($DOCKER_SRC = "artifactory"); then
+                DOCKER_SRC_FLAG = 1
                 else
-                {
-                DOCKER_SRC_FLAG = false
-                }
+                DOCKER_SRC_FLAG = 0
+                fi
                 echo $DOCKER_SRC_FLAG
+                ''', returnStdout: true)
             }
         }
-
+         
         stage('ecr-creation') {
             steps {
                 withCredentials([aws(accessKeyVariable:'AWS_ACCESS_KEY_ID',credentialsId:'srv-ecr-usr',secretKeyVariable:'AWS_SECRET_ACCESS_KEY')]) {
