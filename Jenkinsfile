@@ -34,9 +34,9 @@ pipeline {
                 echo $DOCKER_SRC
                 if [ $DOCKER_SRC = "ECR" ]; 
                 then 
-	                DOCKER_SOURCE="ECR" 
+	                DOCKER_SOURCE="ECR-repo" 
                 else 
-	                DOCKER_SOURCE="artifactory"
+	                DOCKER_SOURCE="artifactory-repo"
                 fi
                 echo $DOCKER_SOURCE
                 ''', returnStdout: true)
