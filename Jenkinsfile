@@ -3,7 +3,9 @@ pipeline {
     environment {
         AWS_DEFAULT_REGION = 'ap-southeast-2'
         //TEMP_VAR = credentials('srv-ecr-usr')
+        def DOCKER_SRC_FLAG = false
     }
+
 
     parameters{
         choice(name: 'DOCKER_SRC', choices: ['ECR','artifactory'], description: 'Source of Sonarqube Docker Source')
@@ -29,9 +31,9 @@ pipeline {
             steps {
                 echo 'Scanning....'
                 if ($DOCKER_SRC == 'artifactory')
-                echo 'artifactory'
+                DOCKER_SRC_FLAG = true
                 else
-                echo 'ECR'
+                DOCKER_SRC_FLAG = false
             }
         }
 
@@ -45,7 +47,7 @@ pipeline {
                     terraform get -update
                     terraform plan
                     TF_LOG=DEBUG terraform apply \
-                    -var "repo_src_flag=${DOCKER_SRC}" \
+                    -var "repo_src_flag=${DOCKER_SRC_FLAG}" \
                     -auto-approve=true
                     """, returnStdout: true)
                     }  
