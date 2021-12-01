@@ -3,7 +3,7 @@ pipeline {
     environment {
         AWS_DEFAULT_REGION = 'ap-southeast-2'
         //TEMP_VAR = credentials('srv-ecr-usr')
-        def DOCKER_SRC_FLAG = false
+        def DOCKER_SOURCE = " "
     }
 
 
