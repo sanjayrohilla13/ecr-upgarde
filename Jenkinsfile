@@ -34,11 +34,11 @@ pipeline {
                 echo $DOCKER_SRC
                 if [ $DOCKER_SRC = "ECR" ]; 
                 then 
-	                DOCKER_SRC_FLAG=1 
+	                DOCKER_SOURCE="ECR" 
                 else 
-	                DOCKER_SRC_FLAG=0 
+	                DOCKER_SOURCE="artifactory"
                 fi
-                echo $DOCKER_SRC_FLAG
+                echo $DOCKER_SOURCE
                 ''', returnStdout: true)
             }
         }
@@ -53,7 +53,7 @@ pipeline {
                     terraform get -update
                     terraform plan
                     TF_LOG=DEBUG terraform apply \
-                    -var "repo_src_flag=${DOCKER_SRC_FLAG}" \
+                    -var "repo_src=${DOCKER_SOURCE}" \
                     -auto-approve=true
                     """, returnStdout: true)
                     }  

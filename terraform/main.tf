@@ -4,6 +4,7 @@ resource "aws_instance" "Demo_Instance" {
     instance_type = "t2.micro"
     #availability_zone = "ap-southeast-2"
     tags = {
-        Name = var.repo_src_flag ? "artifactory-Repo" : "ECR-Repo"
+        #Name = var.repo_src_flag ? "artifactory-Repo" : "ECR-Repo"
+        Name = var.repo_src
     }
 }
