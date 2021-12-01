@@ -31,10 +31,12 @@ pipeline {
             steps {
                 echo 'Scanning....'
                 sh (script: '''
-                if ($DOCKER_SRC = "artifactory"); then
-                DOCKER_SRC_FLAG = 1
-                else
-                DOCKER_SRC_FLAG = 0
+                echo $DOCKER_SRC
+                if [ $DOCKER_SRC = "ECR" ]; 
+                then 
+	                DOCKER_SRC_FLAG=1 
+                else 
+	                DOCKER_SRC_FLAG=0 
                 fi
                 echo $DOCKER_SRC_FLAG
                 ''', returnStdout: true)
