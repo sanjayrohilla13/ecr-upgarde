@@ -28,15 +28,10 @@ pipeline {
         stage('Scan') {
             steps {
                 echo 'Scanning....'
-                sh '''
-                pwd
-                if ${DOCKER_SRC} == 'PCR'
-                then
-                echo 'Success'
+                if ($DOCKER_SRC == 'artifactory')
+                echo 'artifactory'
                 else
-                echo 'Fail'
-                fi
-                '''
+                echo 'ECR'
             }
         }
 
