@@ -30,10 +30,14 @@ pipeline {
         stage('Scan') {
             steps {
                 echo 'Scanning....'
-                if ($DOCKER_SRC == 'artifactory')
+                if ($DOCKER_SRC == 'artifactory'){
                 DOCKER_SRC_FLAG = true
+                }
                 else
+                {
                 DOCKER_SRC_FLAG = false
+                }
+                echo $DOCKER_SRC_FLAG
             }
         }
 
