@@ -17,8 +17,8 @@ pipeline {
 
         stage('Build') {
             steps {
-               // sh 'make docker-build'
-               sh 'docker build -t centos-repo .'
+                sh 'make docker-build'
+               //sh 'docker build -t centos-repo .'
             echo 'Building....'
             }
         }    
