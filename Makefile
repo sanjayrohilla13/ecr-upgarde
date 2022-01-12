@@ -35,7 +35,7 @@ push-ecr:
 	docker tag centos-repo:latest $(ECR_FULL_IMAGE)
 # docker push 240979667302.dkr.ecr.ap-southeast-2.amazonaws.com/centos-repo:Image1
     $(aws ecr get-login --region "ap-southeast-2 --no-include-email")
-	docker push $(ECR_FULL_IMAGE)
+#docker push $(ECR_FULL_IMAGE)
 .PHONY: push-ecr
 
 # Build docker image and push to AWS registry
