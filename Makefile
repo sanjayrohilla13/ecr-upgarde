@@ -13,7 +13,8 @@ docker-build:
 	docker build -t centos-repo .
 # Login to AWS registry (must have docker running)
 login-ecr:
-	aws ecr get-login-password --region ap-southeast-2 | docker login --username AWS --password-stdin 240979667302.dkr.ecr.ap-southeast-2.amazonaws.com
+#aws ecr get-login-password --region ap-southeast-2 | docker login --username AWS --password-stdin 240979667302.dkr.ecr.ap-southeast-2.amazonaws.com
+	$(aws ecr get-login --region "ap-southeast-2 --no-include-email")
 .PHONY: login-ecr
 
 # Tag docker image
