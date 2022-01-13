@@ -23,6 +23,7 @@ pipeline {
 
         stage('Build') {
             steps {
+               script {
                // sh 'make docker-build '
                //sh 'docker build -t centos-repo .'
                switch(params.env) {
@@ -35,6 +36,7 @@ pipeline {
                }
                println "${AWS_ACC_NO}" 
                echo 'Building....'
+               }
             }
         }    
         stage('Scan') {
