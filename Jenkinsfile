@@ -1,4 +1,3 @@
-AWS_ACC_NO = 9999999999
 pipeline {
     agent any
     parameters {
@@ -8,7 +7,14 @@ pipeline {
         AWS_DEFAULT_REGION = 'ap-southeast-2'
         //TEMP_VAR = credentials('srv-ecr-usr')\
         //AWS_ACC_NO = 12345689012
-        
+        switch(params.env) {
+                case 'dev':
+                    AWS_ACC_NO=98765432145;
+                    break;
+                case 'preprod':
+                    AWS_ACC_NO=10087654321;
+                    break;
+               }
     }
 
     stages {
@@ -27,14 +33,7 @@ pipeline {
                script {
                // sh 'make docker-build '
                //sh 'docker build -t centos-repo .'
-               switch(params.env) {
-                case 'dev':
-                    AWS_ACC_NO=98765432145;
-                    break;
-                case 'preprod':
-                    AWS_ACC_NO=10087654321;
-                    break;
-               }
+               
                println "${AWS_ACC_NO}" 
                echo 'Building....'
                }
