@@ -5,7 +5,6 @@ pipeline {
     }
     environment {
         AWS_DEFAULT_REGION = 'ap-southeast-2'
-        AWC_ACC_NO = 9999999999
     }
 
     stages {
@@ -26,10 +25,13 @@ pipeline {
                //sh 'docker build -t centos-repo .'
                 switch(params.env) {
                 case 'dev':
-                    env.AWS_ACC_NO=98765432145;
+                    env.AWS_ACC_NO=11111111111;
                     break;
                 case 'preprod':
-                    env.AWS_ACC_NO=10087654321;
+                    env.AWS_ACC_NO=22222222222;
+                    break;
+                case 'prod':
+                    env.AWS_ACC_NO=333333333333;
                     break;
                }
                println "${env.AWS_ACC_NO}" 
