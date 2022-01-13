@@ -4,6 +4,7 @@ pipeline {
         string(name: 'env', defaultValue: 'dev', description: 'Environment')
     }
     environment {
+        script {
         AWS_DEFAULT_REGION = 'ap-southeast-2'
         //TEMP_VAR = credentials('srv-ecr-usr')\
         //AWS_ACC_NO = 12345689012
@@ -15,6 +16,7 @@ pipeline {
                     AWS_ACC_NO=10087654321;
                     break;
                }
+        }
     }
 
     stages {
