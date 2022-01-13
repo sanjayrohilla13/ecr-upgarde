@@ -35,10 +35,10 @@ pipeline {
             steps {
                // withCredentials([aws(accessKeyVariable:'AWS_ACCESS_KEY_ID',credentialsId:'jenkins-aws-user',secretKeyVariable:'AWS_SECRET_ACCESS_KEY')]) {
                // Docker Login in Jenkinsfile
-                sh 'make login-ecr'
-                echo 'looged in'
-                sh 'make push-ecr'
-                echo 'image pushed'
+                //sh 'make login-ecr'
+                //echo 'looged in'
+                //sh 'make push-ecr'
+                //echo 'image pushed'
                /*
                 echo 'Logging in..'
                 sh '''
