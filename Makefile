@@ -3,6 +3,8 @@ testqube_VERSION ?= 9.0
 ECR_REPO = $(AWS_ACC_NO).dkr.ecr.ap-southeast-2.amazonaws.com/testqube
 FULL_VERSION = $(testqube_VERSION)-$(BUILD_NUMBER)
 ECR_FULL_IMAGE = $(ECR_REPO):$(FULL_VERSION)
+
+.EXPORT_ALL_VARIABLES:
 docker-build:
 	docker build -t centos-repo .
 .PHONY: docker-build
