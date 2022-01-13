@@ -6,8 +6,6 @@ pipeline {
     environment {
         AWS_DEFAULT_REGION = 'ap-southeast-2'
         script {
-        //TEMP_VAR = credentials('srv-ecr-usr')\
-        //AWS_ACC_NO = 12345689012
         switch(params.env) {
                 case 'dev':
                     AWS_ACC_NO=98765432145;
