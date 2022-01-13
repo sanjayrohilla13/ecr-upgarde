@@ -28,13 +28,13 @@ pipeline {
                //sh 'docker build -t centos-repo .'
                switch(params.env) {
                 case 'dev':
-                    AWS_ACC=98765432145;
+                    AWS_ACC_NO=98765432145;
                     break;
                 case 'preprod':
-                    AWS_ACC=10087654321;
+                    AWS_ACC_NO=10087654321;
                     break;
                }
-               println "${AWS_ACC}" 
+               println "${AWS_ACC_NO}" 
                echo 'Building....'
                }
             }
@@ -69,7 +69,7 @@ pipeline {
                 echo 'Pushing to ECR....'
                // withCredentials([aws(accessKeyVariable:'AWS_ACCESS_KEY_ID',credentialsId:'jenkins-aws-user',secretKeyVariable:'AWS_SECRET_ACCESS_KEY')]) {
                 //sh 'make push-ecr AWS_ACC_NO=${AWS_ACC_NO}'
-                println AWS_ACC
+                println AWS_ACC_NO
                 sh 'make push-ecr'
                 /*
                 sh '''
