@@ -5,16 +5,7 @@ pipeline {
     }
     environment {
         AWS_DEFAULT_REGION = 'ap-southeast-2'
-        script {
-        switch(params.env) {
-                case 'dev':
-                    AWS_ACC_NO=98765432145;
-                    break;
-                case 'preprod':
-                    AWS_ACC_NO=10087654321;
-                    break;
-               }
-        }
+        AWC_ACC_NO = 9999999999
     }
 
     stages {
@@ -33,12 +24,21 @@ pipeline {
                script {
                // sh 'make docker-build '
                //sh 'docker build -t centos-repo .'
-               
-               println "${AWS_ACC_NO}" 
+                switch(params.env) {
+                case 'dev':
+                    env.AWS_ACC_NO=98765432145;
+                    break;
+                case 'preprod':
+                    env.AWS_ACC_NO=10087654321;
+                    break;
+               }
+               println "${env.AWS_ACC_NO}" 
                echo 'Building....'
                }
             }
         }    
+
+
         stage('Scan') {
             steps {
                 echo 'Scanning....'
@@ -69,7 +69,7 @@ pipeline {
                 echo 'Pushing to ECR....'
                // withCredentials([aws(accessKeyVariable:'AWS_ACCESS_KEY_ID',credentialsId:'jenkins-aws-user',secretKeyVariable:'AWS_SECRET_ACCESS_KEY')]) {
                 //sh 'make push-ecr AWS_ACC_NO=${AWS_ACC_NO}'
-                println AWS_ACC_NO
+                println env.AWS_ACC_NO
                 sh 'make push-ecr'
                 /*
                 sh '''
