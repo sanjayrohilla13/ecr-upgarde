@@ -55,7 +55,7 @@ pipeline {
                 echo 'Pushing to ECR....'
                // withCredentials([aws(accessKeyVariable:'AWS_ACCESS_KEY_ID',credentialsId:'jenkins-aws-user',secretKeyVariable:'AWS_SECRET_ACCESS_KEY')]) {
                 //sh 'make push-ecr AWS_ACC_NO=${AWS_ACC_NO}'
-                sh 'make push-ecr'
+                sh 'make push-ecr AWS_ACC_NO=${AWS_ACC_NO}'
                 /*
                 sh '''
                     docker tag centos-repo:latest 240979667302.dkr.ecr.ap-southeast-2.amazonaws.com/centos-repo:Image1
