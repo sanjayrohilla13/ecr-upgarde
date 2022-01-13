@@ -2,7 +2,8 @@ pipeline {
     agent any
     environment {
         AWS_DEFAULT_REGION = 'ap-southeast-2'
-        //TEMP_VAR = credentials('srv-ecr-usr')
+        //TEMP_VAR = credentials('srv-ecr-usr')\
+        AWS_ACC_NO = 12345689012
     }
 
     stages {
@@ -20,7 +21,6 @@ pipeline {
             steps {
                // sh 'make docker-build '
                //sh 'docker build -t centos-repo .'
-               AWS_ACC_NO = 12345689012
                println "${AWS_ACC_NO}" 
                echo 'Building....'
             }
