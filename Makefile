@@ -1,5 +1,6 @@
 testqube_VERSION ?= 9.0
-ECR_REPO = 240979667302.dkr.ecr.ap-southeast-2.amazonaws.com/testqube
+#ECR_REPO = 240979667302.dkr.ecr.ap-southeast-2.amazonaws.com/testqube
+ECR_REPO = $(AWS_ACC_NO).dkr.ecr.ap-southeast-2.amazonaws.com/testqube
 FULL_VERSION = $(testqube_VERSION)-$(BUILD_NUMBER)
 ECR_FULL_IMAGE = $(ECR_REPO):$(FULL_VERSION)
 docker-build:
@@ -13,5 +14,7 @@ login-ecr:
 
 push-ecr:
 #echo $(ecr-name)
-	docker push $(ECR_FULL_IMAGE)
+#docker push $(ECR_FULL_IMAGE)
+	ECR_REPO=$(AWS_ACC_NO).dkr.ecr.ap-southeast-2.amazonaws.com/testqube
+	@echo $(ECR_FULL_IMAGE)
 .PHONY: push-ecr
