@@ -31,24 +31,24 @@ pipeline {
             }
         }    
 
-        stage('Docker Login') {
-            steps {
-               // withCredentials([aws(accessKeyVariable:'AWS_ACCESS_KEY_ID',credentialsId:'jenkins-aws-user',secretKeyVariable:'AWS_SECRET_ACCESS_KEY')]) {
-               // Docker Login in Jenkinsfile
-                //sh 'make login-ecr'
-                //echo 'looged in'
-                //sh 'make push-ecr'
-                //echo 'image pushed'
-               /*
-                echo 'Logging in..'
-                sh '''
-                aws --version
-                aws ec2 describe-instances
-                aws ecr get-login-password --region ap-southeast-2 | docker login --username AWS --password-stdin 240979667302.dkr.ecr.ap-southeast-2.amazonaws.com
-                ''' */
-               // }    
-            }
-        }
+        // stage('Docker Login') {
+        //     steps {
+        //        // withCredentials([aws(accessKeyVariable:'AWS_ACCESS_KEY_ID',credentialsId:'jenkins-aws-user',secretKeyVariable:'AWS_SECRET_ACCESS_KEY')]) {
+        //        // Docker Login in Jenkinsfile
+        //         //sh 'make login-ecr'
+        //         //echo 'looged in'
+        //         //sh 'make push-ecr'
+        //         //echo 'image pushed'
+        //        /*
+        //         echo 'Logging in..'
+        //         sh '''
+        //         aws --version
+        //         aws ec2 describe-instances
+        //         aws ecr get-login-password --region ap-southeast-2 | docker login --username AWS --password-stdin 240979667302.dkr.ecr.ap-southeast-2.amazonaws.com
+        //         ''' */
+        //        // }    
+        //     }
+        // }
 
         stage('Push to ECR') {
             steps {
