@@ -20,8 +20,8 @@ pipeline {
             steps {
                // sh 'make docker-build '
                //sh 'docker build -t centos-repo .'
-               AWS_ACC_NO = "12345689012"
-               println ${AWS_ACC_NO}  
+               AWS_ACC_NO = 12345689012
+               println "${AWS_ACC_NO}" 
                echo 'Building....'
             }
         }    
